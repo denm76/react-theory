@@ -1,13 +1,19 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
+class App extends Component {
     //Синтаксис jsx
-  return (
-    <div className="App">
-        <h2>Hello, world!</h2>
-    </div>
-  );
+    render(){
+        const divStyles = {
+            textAlign:'center'
+        }
+        return (
+            <div style = {divStyles}>
+                <h1 style = {{color:'blue', fontSize:'60px'}}>Hello, world!</h1>
+            </div>
+        )
+    }
+
 }
 
 export default App;

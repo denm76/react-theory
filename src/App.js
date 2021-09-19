@@ -11,8 +11,8 @@ class App extends Component {
         return (
             <div style = {divStyles}>
                 <h1 style = {{color:'blue', fontSize:'60px'}}>Hello, world!</h1>
-                <Car />
-                <Car />
+                <Car name = {'Ford'} year = {2018} />
+                <Car name = "Audi" year = {2016}/>
             </div>
 
         )

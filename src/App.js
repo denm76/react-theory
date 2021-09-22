@@ -11,6 +11,11 @@ class App extends Component {
         ],
         pageTitle:'React components'
     }
+    handlerChangeTitle = () =>{
+        const oldTitle = this.state.pageTitle;
+        const newTitle = oldTitle + ' changed';
+        this.setState({pageTitle:newTitle});
+    }
     //Синтаксис jsx
     render(){
         const divStyles = {
@@ -20,6 +25,7 @@ class App extends Component {
         return (
             <div style = {divStyles}>
                 <h1 style = {{color:'blue', fontSize:'60px'}}>{this.state.pageTitle}</h1>
+                <button onClick={this.handlerChangeTitle}>Change Title</button>
                 <Car name = {cars[0].name} year = {cars[0].year}/>
                 <Car name = {cars[1].name} year = {cars[1].year}/>
                 <Car name = {cars[2].name} year = {cars[2].year}/>

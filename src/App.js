@@ -11,9 +11,7 @@ class App extends Component {
         ],
         pageTitle:'React components'
     }
-    handlerChangeTitle = () =>{
-        const oldTitle = this.state.pageTitle;
-        const newTitle = oldTitle + ' changed';
+    handlerChangeTitle = (newTitle) =>{
         this.setState({pageTitle:newTitle});
     }
     //Синтаксис jsx
@@ -25,10 +23,24 @@ class App extends Component {
         return (
             <div style = {divStyles}>
                 <h1 style = {{color:'blue', fontSize:'60px'}}>{this.state.pageTitle}</h1>
-                <button onClick={this.handlerChangeTitle}>Change Title</button>
-                <Car name = {cars[0].name} year = {cars[0].year}/>
-                <Car name = {cars[1].name} year = {cars[1].year}/>
-                <Car name = {cars[2].name} year = {cars[2].year}/>
+                <button onClick={this.handlerChangeTitle.bind(this, 'Changed!')}>Change Title</button>
+                <Car
+                    name = {cars[0].name}
+                    year = {cars[0].year}
+                    //1-й способ передачи параметра в функцию-хэндлер, занимает меньше ресурсов
+                    onChangeTitle = {this.handlerChangeTitle.bind(this, cars[0].name)}
+                />
+                <Car
+                    name = {cars[1].name}
+                    year = {cars[1].year}
+                    //2-й способ передачи параметра в функцию-хэндлер
+                    onChangeTitle = {() => this.handlerChangeTitle(cars[1].name)}
+                />
+                <Car
+                    name = {cars[2].name}
+                    year = {cars[2].year}
+                    onChangeTitle = {() => this.handlerChangeTitle(cars[2].name)}
+                />
             </div>
 
         )

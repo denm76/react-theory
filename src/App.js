@@ -14,6 +14,11 @@ class App extends Component {
     handlerChangeTitle = (newTitle) =>{
         this.setState({pageTitle:newTitle});
     }
+    handlerInput = (event) =>{
+        this.setState({
+            pageTitle: event.target.value
+        });
+    }
     //Синтаксис jsx
     render(){
         const divStyles = {
@@ -23,6 +28,7 @@ class App extends Component {
         return (
             <div style = {divStyles}>
                 <h1 style = {{color:'blue', fontSize:'60px'}}>{this.state.pageTitle}</h1>
+                <input type="text" onChange={this.handlerInput}/>
                 <button onClick={this.handlerChangeTitle.bind(this, 'Changed!')}>Change Title</button>
                 <Car
                     name = {cars[0].name}

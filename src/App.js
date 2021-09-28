@@ -9,16 +9,22 @@ class App extends Component {
             {name:'Audi', year:2016},
             {name:'Mazda 3', year:2019}
         ],
-        pageTitle:'React components'
+        pageTitle:'React components',
+        showCars:false
+    }
+    toggleCarsHandler = () =>{
+        this.setState({
+            showCars: !this.state.showCars
+        });
     }
     handlerChangeTitle = (newTitle) =>{
         this.setState({pageTitle:newTitle});
     }
-    handlerInput = (event) =>{
-        this.setState({
-            pageTitle: event.target.value
-        });
-    }
+    // handlerInput = (event) =>{
+    //     this.setState({
+    //         pageTitle: event.target.value
+    //     });
+    // }
     //Синтаксис jsx
     render(){
         const divStyles = {
@@ -27,21 +33,32 @@ class App extends Component {
         return (
             <div style = {divStyles}>
                 <h1 style = {{color:'blue', fontSize:'60px'}}>{this.state.pageTitle}</h1>
-                <input type="text" onChange={this.handlerInput}/>
-                <button onClick={this.handlerChangeTitle.bind(this, 'Changed!')}>Change Title</button>
+                {/*<input type="text" onChange={this.handlerInput}/>*/}
+                {/*<button onClick={this.handlerChangeTitle.bind(this, 'Changed!')}>Change Title</button>*/}
+                <button onClick={this.toggleCarsHandler}>Toggle Cars</button>
                 {/*передача параметров компонента при помощи map*/}
-                {this.state.cars.map((car, index)=>{
+                {/*применение тернарного оператора при проверке свойства showCars,
+                тк блочная структура if-else в JSX-синтаксисе не работает*/}
+
+                { this.state.showCars
+                    ? this.state.cars.map((car, index)=>{
+
                     return (
-                        <Car
+                    <Car
                             key = {index}
                             name = {car.name}
                             year = {car.year}
-                            onChangeTitle = { ()=>{
-                                this.handlerChangeTitle(car.name)
-                            }}
-                        />
+                            onChangeTitle = {() => {
+                            this.handlerChangeTitle(car.name)
+                        }}
+                    />
                     )
-                })}
+
+                })
+                    : null
+                }
+
+
                 {/*<Car*/}
                 {/*    name = {cars[0].name}*/}
                 {/*    year = {cars[0].year}*/}

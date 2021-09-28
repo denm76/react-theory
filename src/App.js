@@ -25,11 +25,30 @@ class App extends Component {
     //         pageTitle: event.target.value
     //     });
     // }
-    //Синтаксис jsx
+
     render(){
         const divStyles = {
             textAlign:'center'
         }
+        // Логика вынесена вне синтаксиса JSX для применения обычных условных операторов JavaScript, после чего
+        // переменная cars передаётся в JSX cyntaxis для отрисовки
+        let cars = null
+        if(this.state.showCars){
+            cars = this.state.cars.map((car, index)=>{
+                return (
+                    <Car
+                        key = {index}
+                        name = {car.name}
+                        year = {car.year}
+                        onChangeTitle = {() => {
+                            this.handlerChangeTitle(car.name)
+                        }}
+                    />
+                )
+
+            })
+        }
+        //Синтаксис jsx
         return (
             <div style = {divStyles}>
                 <h1 style = {{color:'blue', fontSize:'60px'}}>{this.state.pageTitle}</h1>
@@ -40,22 +59,8 @@ class App extends Component {
                 {/*применение тернарного оператора при проверке свойства showCars,
                 тк блочная структура if-else в JSX-синтаксисе не работает*/}
 
-                { this.state.showCars
-                    ? this.state.cars.map((car, index)=>{
-
-                    return (
-                    <Car
-                            key = {index}
-                            name = {car.name}
-                            year = {car.year}
-                            onChangeTitle = {() => {
-                            this.handlerChangeTitle(car.name)
-                        }}
-                    />
-                    )
-
-                })
-                    : null
+                {
+                    cars
                 }
 
 

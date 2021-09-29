@@ -76,9 +76,16 @@ class App extends Component {
                 {/*применение тернарного оператора при проверке свойства showCars,
                 тк блочная структура if-else в JSX-синтаксисе не работает*/}
 
-                {
-                    cars
-                }
+
+                    <div style = {{
+                        width:500,
+                        margin:'auto',
+                        paddingTop:'20px',
+                    }}>
+                        {cars}
+                    </div>
+
+
 
 
                 {/*<Car*/}

@@ -68,7 +68,8 @@ class App extends Component {
         //Синтаксис jsx
         return (
             <div style = {divStyles}>
-                <h1 style = {{color:'blue', fontSize:'60px'}}>{this.state.pageTitle}</h1>
+                {/*<h1 style = {{color:'blue', fontSize:'60px'}}>{this.state.pageTitle}</h1>*/}
+                <h1>{this.props.title}</h1>{/*передача параметра из index.js*/}
                 {/*<input type="text" onChange={this.handlerInput}/>*/}
                 {/*<button onClick={this.handlerChangeTitle.bind(this, 'Changed!')}>Change Title</button>*/}
                 <button onClick={this.toggleCarsHandler}>Toggle Cars</button>

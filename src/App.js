@@ -3,15 +3,19 @@ import './App.css';
 import Car from "./Car/Car";
 
 class App extends Component {
-    state = {
-        cars:[
-            {name:'Ford', year:2018},
-            {name:'Audi', year:2016},
-            {name:'Mazda 3', year:2019}
-        ],
-        pageTitle:'React components',
-        showCars:false
+    constructor(props) {
+        super(props);
+        this.state = {
+            cars:[
+                {name:'Ford', year:2018},
+                {name:'Audi', year:2016},
+                {name:'Mazda 3', year:2019}
+            ],
+            pageTitle:'React components',
+            showCars:false
+        }
     }
+  
     toggleCarsHandler = () =>{
         this.setState({
             showCars: !this.state.showCars

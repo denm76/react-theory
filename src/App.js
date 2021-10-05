@@ -1,17 +1,22 @@
 import React, {Component} from 'react';
-import './App.css';
+import classes from './App.module.scss';
 import Car from "./Car/Car";
 
 class App extends Component {
-    state = {
-        cars:[
-            {name:'Ford', year:2018},
-            {name:'Audi', year:2016},
-            {name:'Mazda 3', year:2019}
-        ],
-        pageTitle:'React components',
-        showCars:false
+    constructor(props) {
+        console.log('App constructor');
+        super(props);
+        this.state = {
+            cars:[
+                {name:'Ford', year:2018},
+                {name:'Audi', year:2016},
+                {name:'Mazda 3', year:2019}
+            ],
+            pageTitle:'React components',
+            showCars:false
+        }
     }
+  
     toggleCarsHandler = () =>{
         this.setState({
             showCars: !this.state.showCars
@@ -41,8 +46,16 @@ class App extends Component {
     //         pageTitle: event.target.value
     //     });
     // }
+    componentWillMount() {
+        console.log('App componentWillMount')
+    }
+
+    componentDidMount(){
+        console.log('App componentDidMount')
+    }
 
     render(){
+        console.log('App render');
         const divStyles = {
             textAlign:'center'
         }
@@ -72,7 +85,7 @@ class App extends Component {
                 <h1>{this.props.title}</h1>{/*передача параметра из index.js*/}
                 {/*<input type="text" onChange={this.handlerInput}/>*/}
                 {/*<button onClick={this.handlerChangeTitle.bind(this, 'Changed!')}>Change Title</button>*/}
-                <button onClick={this.toggleCarsHandler}>Toggle Cars</button>
+                <button onClick={this.toggleCarsHandler} className={classes.AppButton}>Toggle Cars</button>
                 {/*передача параметров компонента при помощи map*/}
                 {/*применение тернарного оператора при проверке свойства showCars,
                 тк блочная структура if-else в JSX-синтаксисе не работает*/}

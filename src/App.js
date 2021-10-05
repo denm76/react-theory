@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import classes from './App.module.scss';
 import Car from "./Car/Car";
 
 class App extends Component {
@@ -85,7 +85,7 @@ class App extends Component {
                 <h1>{this.props.title}</h1>{/*передача параметра из index.js*/}
                 {/*<input type="text" onChange={this.handlerInput}/>*/}
                 {/*<button onClick={this.handlerChangeTitle.bind(this, 'Changed!')}>Change Title</button>*/}
-                <button onClick={this.toggleCarsHandler}>Toggle Cars</button>
+                <button onClick={this.toggleCarsHandler} className={classes.AppButton}>Toggle Cars</button>
                 {/*передача параметров компонента при помощи map*/}
                 {/*применение тернарного оператора при проверке свойства showCars,
                 тк блочная структура if-else в JSX-синтаксисе не работает*/}

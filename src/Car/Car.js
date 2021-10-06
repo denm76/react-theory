@@ -17,19 +17,19 @@ class Car extends React.Component{
         console.log('Car componentWillUpdate', nextProps, nextState)
     }
 
-    static getDerivedStateFromProps(nextProps, prevState){
-        console.log('Car getDerivedStateFromProps', nextProps, prevState);
-        return prevState;
-    }
+    // static getDerivedStateFromProps(nextProps, prevState){
+    //     console.log('Car getDerivedStateFromProps', nextProps, prevState);
+    //     return prevState;
+    // }
 
     componentDidUpdate() {
         console.log('Car componentDidUpdate')
     }
 
     //получение доступа к DOM-дереву до обновления state
-    getSnapshotBeforeUpdate(prevProps, prevState) {
-        console.log('Car getSnapshotBeforeUpdate', prevProps, prevState);
-    }
+    // getSnapshotBeforeUpdate(prevProps, prevState) {
+    //     console.log('Car getSnapshotBeforeUpdate', prevProps, prevState);
+    // }
 
     //Жизненный цикл удаления компонента
     componentWillUnmount() {
@@ -38,6 +38,10 @@ class Car extends React.Component{
 
     render() {
         console.log('Car render');
+        //Генерация ошибки для проверки работы ErrorBoundary
+        if(Math.random() > 0.7){
+            throw new Error('Car random failed!')
+        }
         const inputClasses = [classes.input];
         if(this.props.name !== ''){
             inputClasses.push(classes.green);

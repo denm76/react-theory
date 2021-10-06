@@ -17,8 +17,18 @@ class Car extends React.Component{
         console.log('Car componentWillUpdate', nextProps, nextState)
     }
 
+    static getDerivedStateFromProps(nextProps, prevState){
+        console.log('Car getDerivedStateFromProps', nextProps, prevState);
+        return prevState;
+    }
+
     componentDidUpdate() {
         console.log('Car componentDidUpdate')
+    }
+
+    //получение доступа к DOM-дереву до обновления state
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('Car getSnapshotBeforeUpdate', prevProps, prevState);
     }
 
     //Жизненный цикл удаления компонента

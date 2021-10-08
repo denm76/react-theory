@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classes from './App.module.scss';
 import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 import Car from "./Car/Car";
+import Counter from "./Counter/Counter";
 
 class App extends Component {
     constructor(props) {
@@ -9,8 +10,8 @@ class App extends Component {
         super(props);
         this.state = {
             cars:[
-                {name:'Ford', year:2018},
-                {name:'Audi', year:2016},
+                // {name:'Ford', year:2018},
+                // {name:'Audi', year:2016},
                 {name:'Mazda 3', year:2019}
             ],
             pageTitle:'React components',
@@ -83,11 +84,21 @@ class App extends Component {
         //Синтаксис jsx
         return (
             <div style = {divStyles}>
+
                 {/*<h1 style = {{color:'blue', fontSize:'60px'}}>{this.state.pageTitle}</h1>*/}
                 <h1>{this.props.title}</h1>{/*передача параметра из index.js*/}
+
+                <Counter />
+                <hr/>
                 {/*<input type="text" onChange={this.handlerInput}/>*/}
                 {/*<button onClick={this.handlerChangeTitle.bind(this, 'Changed!')}>Change Title</button>*/}
-                <button onClick={this.toggleCarsHandler} className={classes.AppButton}>Toggle Cars</button>
+                <button
+                    style={{marginTop:20,borderRadius:8}}
+                    onClick={this.toggleCarsHandler}
+                    className={classes.AppButton}>
+                    Toggle Cars
+                </button>
+
                 {/*передача параметров компонента при помощи map*/}
                 {/*применение тернарного оператора при проверке свойства showCars,
                 тк блочная структура if-else в JSX-синтаксисе не работает*/}

@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Car.module.scss'
 import withClass from "../hoc/withClass";
+import PropTypes from 'prop-types'
 
 class Car extends React.Component{
 
@@ -73,6 +74,13 @@ class Car extends React.Component{
     }
 }
 
+// Валидация ожидаемых параметров с помощью PropTypes
+Car.propTypes = {
+    name: PropTypes.string.isRequired,
+    year: PropTypes.number,
+    onChangeName: PropTypes.func,
+    onDelete: PropTypes.func
+}
 
 export default withClass(Car, classes.Car)
 

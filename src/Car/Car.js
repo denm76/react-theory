@@ -1,8 +1,22 @@
 import React from 'react';
 import classes from './Car.module.scss'
 import withClass from "../hoc/withClass";
+import PropTypes from 'prop-types'
 
 class Car extends React.Component{
+
+    constructor(props) {
+        super(props);
+        //Создание референции в конструкторе
+        this.inputRef = React.createRef()
+    }
+
+    componentDidMount() {
+        if(this.props.index === 0){
+            //Использование референции
+            this.inputRef.current.focus()
+        }
+    }
 
     // componentWillReceiveProps(nextProps) {
     //     console.log('Car componentWillReceiveProps', nextProps)
@@ -50,7 +64,7 @@ class Car extends React.Component{
         }
 
 
-        if(this.props.name.length > 4){
+        if(this.props.name.length > 5){
             inputClasses.push(classes.bold);
         }
 
@@ -61,6 +75,9 @@ class Car extends React.Component{
                 <p>Year: <strong>{this.props.year}</strong></p>
 
                 <input
+                    //Присвоение референции значения
+                    // ref={(inputRef) => this.inputRef = inputRef}
+                    ref={this.inputRef}
                     type="text"
                     onChange={this.props.onChangeName}
                     value={this.props.name}
@@ -73,6 +90,14 @@ class Car extends React.Component{
     }
 }
 
+// Валидация ожидаемых параметров с помощью PropTypes
+Car.propTypes = {
+    name: PropTypes.string.isRequired,
+    year: PropTypes.number,
+    index: PropTypes.number,
+    onChangeName: PropTypes.func,
+    onDelete: PropTypes.func
+}
 
 export default withClass(Car, classes.Car)
 

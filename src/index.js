@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from 'react-router-dom'
+
+const application = (
+    <BrowserRouter>
+        < App title={'I am from props'}/>
+    </BrowserRouter>
+)
 
 ReactDOM.render(
-   < App title={'I am from props'}/>,
-  document.getElementById('root')
+    application,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
